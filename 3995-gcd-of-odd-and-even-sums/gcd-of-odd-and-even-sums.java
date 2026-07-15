@@ -1,19 +1,23 @@
 class Solution {
     public int gcdOfOddEvenSums(int n) {
-        int SumOdd=0;
-        for(int i=1;i<n;i+=2){
-            SumOdd+=n;
+        int sumOdd = 0;
+        for (int i = 1; i <= 2 * n - 1; i += 2) {
+            sumOdd += i;
         }
-int SumEven=0;
-          for(int i=2;i<n;i+=2){
-            SumEven+=n;
+
+        int sumEven = 0;
+        for (int i = 2; i <= 2 * n; i += 2) {
+            sumEven += i;
         }
-        int ans=0;
-        for(int i=0;i<n;i++){
-            if(SumOdd%n==0 && SumEven%n==0){
-                ans=n;
-            }
+
+        int a = sumOdd, b = sumEven;
+
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
         }
-        return ans;
+
+        return a;
     }
 }
